@@ -2,7 +2,7 @@ const apiKeys = require('./apiKeys');
 const events = require('./events');
 
 apiKeys.retrieveKeys();
-events();
+events.eventInit();
 $('#searchInput').submit((e) => {
   // console.log('submitted');
   e.preventDefault();

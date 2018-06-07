@@ -2,8 +2,6 @@ const data = require('./data');
 
 const { setApiKey, } = data;
 
-// const lwdb = require('./lwdb');
-
 const apiKeys = () => {
   return new Promise((resolve, reject) => {
     $.ajax('./../db/apiKeys.json')
@@ -22,7 +20,6 @@ const retrieveKeys = () => {
   apiKeys()
     .then((results) => {
       setApiKey(results.lwdb.apiKey);
-      // lwdb.setKey(results.lwdb.apiKey);
     })
     .catch((err) => {
       console.error('no keys:', err);
