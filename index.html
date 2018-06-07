@@ -19,7 +19,8 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">
-          <img alt="Brand" src="...">
+          <p>Local Weather</p>
+          <!-- <img alt="Brand" src="..."> -->
         </a>
       </div>
     </div>
@@ -32,16 +33,20 @@
     <button type="submit" class="btn btn-default" id="submitBtn">Submit</button>
   </div>
 
-  <div id="weather"></div>
+  <div class="container-fluid row">
 
-  <button class="hide" id="fiveDayBtn">5 day</button>
+    <div id="weather" class="col-lg-6"></div>
 
-  <div id="five-day-forecast-container"></div>
+    <button class="hide" id="fiveDayBtn">5 day</button>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-    crossorigin="anonymous"></script>
+    <div id="five-day-forecast-container" class="col-lg-6"></div>
+
+  </div>
+
+  <script src=" https://code.jquery.com/jquery-3.3.1.min.js " integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin=" anonymous "></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js " integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa "
+    crossorigin="anonymous "></script>
   <script src="./dist/app.js "></script>
 </body>
 
