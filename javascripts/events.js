@@ -1,5 +1,3 @@
-// const lwdb = require('./lwdb');
-
 const dom = require('./dom');
 const data = require('./data');
 const {
@@ -7,12 +5,28 @@ const {
   deleteZipCodeValue,
   fetchTodaysForecast,
   setTodaysForecast,
+  setFiveDayForecast,
+  fetch5DayForecast,
 } = data;
 
-const { updateTodaysWeatherInUi, } = dom;
+const { updateTodaysWeatherInUi, updateFiveDayForecastInUi, } = dom;
+
+const clickFiveDayBtn = () => {
+  $('#fiveDayBtn').click((e) => {
+    return fetch5DayForecast()
+      .then((response) => {
+        $('#fiveDayBtn').addClass('hide');
+        console.log('response: ', response);
+        setFiveDayForecast(response);
+        console.log(response);
+        updateFiveDayForecastInUi();
+        console.log(updateFiveDayForecastInUi);
+      });
+  });
+};
 
 const searchClickEvent = () => {
-  $(document).on('keypress click', (e) => {
+  $('#search-form').on('keypress click', (e) => {
     const zipCodeInput = $('#searchInput').val();
     setZipCodeValue(zipCodeInput);
     if (e.key === 'Enter' || e.target.id === 'submitBtn') {
@@ -21,16 +35,23 @@ const searchClickEvent = () => {
         deleteZipCodeValue();
 
       } else {
+
         fetchTodaysForecast()
           .then((response) => {
             setTodaysForecast(response);
-            deleteZipCodeValue();
             updateTodaysWeatherInUi();
+            $('#fiveDayBtn').removeClass('hide');
           });
-
       }
     }
   });
 };
 
-module.exports = searchClickEvent;
+const eventInit = () => {
+  searchClickEvent();
+  clickFiveDayBtn();
+};
+
+module.exports = {
+  eventInit,
+};

@@ -4,9 +4,8 @@ const applicationState = {
   apiKey: '',
   zipCodeValue: '',
   todaysForecast: {},
-  fiveDayForecast: [],
+  fiveDayForecast: {},
   selectedDegree: 'F',
-  isFetchingData: false,
   error: '',
 };
 
@@ -46,7 +45,33 @@ const getTodaysForecast = () => {
 
 const fetchTodaysForecast = () => {
   return new Promise((resolve, reject) => {
+
     $.ajax(`http://api.openweathermap.org/data/2.5/weather?zip=${getZipCodeValue()},us&appid=${getApiKey()}&units=imperial`)
+      .done((result) => {
+        resolve(result);
+      })
+      .fail((err) => {
+
+        reject(err);
+      });
+  });
+};
+
+/* ------------- five day forcast ------------- */
+
+const getFiveDayForecast = () => {
+  return applicationState.fiveDayForecast;
+};
+
+const setFiveDayForecast = (new5dayForecast) => {
+  applicationState.fiveDayForecast = new5dayForecast;
+  console.log('\n\nFUNCTION: setFiveDayForecast\n\nthis is my state after setting the 5 day forecast, ', applicationState);
+};
+
+const fetch5DayForecast = () => {
+  // Our network request in a promise
+  return new Promise((resolve, reject) => {
+    $.ajax(`http://api.openweathermap.org/data/2.5/forecast?zip=${getZipCodeValue()},us&appid=${getApiKey()}&units=imperial`)
       .done((result) => {
         resolve(result);
       })
@@ -65,4 +90,7 @@ module.exports = {
   setTodaysForecast,
   getTodaysForecast,
   fetchTodaysForecast,
+  setFiveDayForecast,
+  getFiveDayForecast,
+  fetch5DayForecast,
 };

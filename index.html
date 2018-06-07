@@ -28,11 +28,15 @@
   <!-- search bar -->
 
   <div id="search-form" class="container text-center">
-    <input type="number" class="form input-lg" id="searchInput" placeholder="Enter Zip Code">
+    <input type="number" maxlength="5" class="form input-lg" id="searchInput" placeholder="Enter Zip Code">
     <button type="submit" class="btn btn-default" id="submitBtn">Submit</button>
   </div>
 
   <div id="weather"></div>
+
+  <button class="hide" id="fiveDayBtn">5 day</button>
+
+  <div id="five-day-forecast-container"></div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>

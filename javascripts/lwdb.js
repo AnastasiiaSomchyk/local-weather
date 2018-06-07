@@ -1,7 +1,5 @@
 /* eslint camelcase: 0 */
 
-// const dom = require('./dom');
-
 let lwKey = '';
 
 const setKey = (key) => {
@@ -27,7 +25,6 @@ const showResults = (searchText) => {
   searchZipCode(searchText)
     .then((result) => {
       console.log(result);
-      // dom.currentWeatherDom(weatherArr);
     })
     .catch((err) => {
       console.error('search error', err);
