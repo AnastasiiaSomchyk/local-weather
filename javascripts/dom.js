@@ -34,28 +34,28 @@ const updateFiveDayForecastInUi = () => {
   const fiveDayForecast = getFiveDayForecast();
   const { list, city, } = fiveDayForecast;
   const fiveDaysReduced = list.reduce((updatedDays, day, index) => {
-    console.log('day: ', day, ' updatedDays: ', updatedDays);
-    if (index <= 4) {
+    if (index % 8 === 0) {
       updatedDays.push(day);
       return updatedDays;
     }
     return updatedDays;
   }, []);
-  console.log('5 days reduced: ', fiveDaysReduced);
 
   const section = $('#five-day-forecast-container');
 
   fiveDaysReduced.forEach((day) => {
     section.append(`
     <div class="col-lg-6">
-    <div class="thumbnail">
+    <div class="thumbnail singleWeatherBox">
     <div class="caption">
         <h1>${city.name}<img src="https://openweathermap.org/img/w/${day.weather[0].icon}.png"></h1>
         <h5>Temperature: ${day.main.temp}</h5>
+        <h5>${format(day.dt_txt, 'dddd')}</h5>
         <h5>Description: ${day.weather[0].description}</h5>
         <h5><strong>Air Pressure: </strong>${day.main.pressure}</h5>
         <h5><strong>Wind Speed: </strong>${day.wind.speed}</h5>
       </div>
+      <button id="saveMyForecastBtn" > <span class="glyphicon glyphicon-heart-empty"></span></button>
       </div>
       </div>
     `);

@@ -1,5 +1,7 @@
 const data = require('./data');
 
+const firebaseApi = require('./firebaseApi');
+
 const { setApiKey, } = data;
 
 const apiKeys = () => {
@@ -20,6 +22,8 @@ const retrieveKeys = () => {
   apiKeys()
     .then((results) => {
       setApiKey(results.lwdb.apiKey);
+      firebaseApi.setConfig(results.firebase);
+      console.log('firebase: ', firebase);
     })
     .catch((err) => {
       console.error('no keys:', err);
